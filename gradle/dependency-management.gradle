@@ -1,0 +1,22 @@
+/*
+ * Copyright 2019 - present Maksym Ostroverkhov.
+ */
+
+subprojects {
+    apply plugin: "io.spring.dependency-management"
+
+    dependencyManagement {
+        imports {
+            mavenBom "com.jauntsdn.rsocket:rsocket-bom:${rSocketVersion}"
+        }
+
+        dependencies {
+            dependency "org.hdrhistogram:HdrHistogram:${hdrHistogramVersion}"
+            dependency "ch.qos.logback:logback-classic:${logbackVersion}"
+            dependency "org.slf4j:slf4j-api:${slf4jVersion}"
+        }
+        generatedPomCustomization {
+            enabled = false
+        }
+    }
+}
