@@ -1,7 +1,7 @@
 package com.jauntsdn.rsocket.showcase.lease;
 
 @javax.annotation.Generated(
-    value = "jauntsdn.com rpc compiler (version 1.1.1)",
+    value = "jauntsdn.com rpc compiler (version 1.1.3)",
     comments = "source: com/jauntsdn/rsocket/showcase/lease/service.proto")
 public interface Service {
   String SERVICE = "com.jauntsdn.rsocket.showcase.lease.Service";
