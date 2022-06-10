@@ -1,3 +1,4 @@
+[![Build](https://github.com/jauntsdn/rsocket-requests-lease-examples/actions/workflows/ci-build.yml/badge.svg)](https://github.com/jauntsdn/rsocket-requests-lease-examples/actions/workflows/ci-build.yml)
 ### RSocket-requests-lease
 
 Simplistic example for https://jauntsdn.com/post/rsocket-lease-concurrency-limiting/ - 
@@ -7,7 +8,7 @@ Application consists of single RSocket-RPC client connecting set of RSocket-RPC 
 
 1. Servers   
 `com/jauntsdn/rsocket/showcase/lease/server/Main.java`  
-
+``
 2. Proxy
 `com/jauntsdn/rsocket/showcase/lease/proxy/Main.java`
 
