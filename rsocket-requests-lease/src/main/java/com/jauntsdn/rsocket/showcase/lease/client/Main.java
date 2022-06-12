@@ -16,6 +16,7 @@
 
 package com.jauntsdn.rsocket.showcase.lease.client;
 
+import com.jauntsdn.rsocket.MessageStreams;
 import com.jauntsdn.rsocket.showcase.lease.RSocketFactory;
 import com.jauntsdn.rsocket.showcase.lease.Request;
 import com.jauntsdn.rsocket.showcase.lease.Service;
@@ -68,10 +69,10 @@ public class Main {
         .subscribe();
 
     rSocketFactory
-        .client(inetSocketAddress)
+        .serviceClient(inetSocketAddress)
         .flatMapMany(
-            rSocket -> {
-              Service service = ServiceClient.create(rSocket);
+            (MessageStreams messageStreams) -> {
+              Service service = ServiceClient.create(messageStreams);
               return Flux.interval(Duration.ofMillis(1))
                   .onBackpressureDrop()
                   .flatMap(

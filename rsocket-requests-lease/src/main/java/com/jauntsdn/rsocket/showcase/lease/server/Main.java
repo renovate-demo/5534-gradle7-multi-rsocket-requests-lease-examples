@@ -16,9 +16,7 @@
 
 package com.jauntsdn.rsocket.showcase.lease.server;
 
-import com.jauntsdn.rsocket.Interaction;
-import com.jauntsdn.rsocket.Lease;
-import com.jauntsdn.rsocket.Rpc;
+import com.jauntsdn.rsocket.*;
 import com.jauntsdn.rsocket.exceptions.RejectedException;
 import com.jauntsdn.rsocket.showcase.lease.RSocketFactory;
 import com.jauntsdn.rsocket.showcase.lease.ServiceServer;
@@ -55,13 +53,13 @@ public class Main {
     Duration leaseTimeToLive = Duration.ofSeconds(1);
 
     rSocketFactory
-        .server(
+        .serviceServer(
             inetSocketAddress,
             /*acceptor*/
-            (setup, requesterRSocket) ->
+            (SetupMessage setup, MessageStreams messageStreams) ->
                 Mono.just(
                     ServiceServer.create(new SaturableService(inetSocketAddress, concurrencyDelay))
-                        .withLifecycle(requesterRSocket)),
+                        .withLifecycle(messageStreams)),
             /*lease controller*/
             leaseController -> {
               ConstantLeaseController constantLeaseController =

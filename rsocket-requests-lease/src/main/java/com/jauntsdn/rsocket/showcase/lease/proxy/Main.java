@@ -17,6 +17,7 @@
 package com.jauntsdn.rsocket.showcase.lease.proxy;
 
 import com.jauntsdn.rsocket.RSocket;
+import com.jauntsdn.rsocket.SetupMessage;
 import com.jauntsdn.rsocket.showcase.lease.RSocketFactory;
 import java.net.InetSocketAddress;
 import java.util.Arrays;
@@ -43,7 +44,7 @@ public class Main {
         addresses(backendAddresses)
             .map(
                 backendAddress ->
-                    rSocketFactory.client(
+                    rSocketFactory.proxyClient(
                         backendAddress,
                         /*enable lease, no stats are recorded*/
                         leaseController -> Optional.empty()))
@@ -52,8 +53,9 @@ public class Main {
     RSocket leastLoadedBalancerRSocket = new LeastLoadedBalancerRSocket(backendRSockets);
 
     rSocketFactory
-        .server(
-            address(address), (setup, requesterRSocket) -> Mono.just(leastLoadedBalancerRSocket))
+        .proxyServer(
+            address(address),
+            (SetupMessage setup, RSocket requesterRSocket) -> Mono.just(leastLoadedBalancerRSocket))
         .block()
         .onClose()
         .awaitUninterruptibly();
