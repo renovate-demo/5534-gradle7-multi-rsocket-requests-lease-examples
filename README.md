@@ -24,6 +24,14 @@ observed response latencies.
 
 [RSocket-JVM runtimes](https://jauntsdn.com/post/rsocket-jvm/) are stripped on this branch.
 
+### Build
+
+`./gradlew`
+
+Regenerate RPC client/service stubs (linux, windows(x86) only)
+
+`./gradlew clean build -PgenerateProto=true`
+
 ## License
 Copyright 2020 - Present Maksym Ostroverkhov
 
