@@ -31,17 +31,6 @@ dependencies {
     runtimeOnly "ch.qos.logback:logback-classic"
 }
 
-idea {
-    module {
-        sourceDirs += file("src/main/proto")
-        sourceDirs += file("src/generated/main/java")
-        sourceDirs += file("src/generated/main/rsocketRpc")
-
-        generatedSourceDirs += file("src/generated/main/java")
-        generatedSourceDirs += file("src/generated/main/rsocketRpc")
-    }
-}
-
 if (findProperty("generateProto") == "true") {
     println "Generating services from IDL"
 
@@ -57,13 +46,13 @@ if (findProperty("generateProto") == "true") {
             artifact = "com.google.protobuf:protoc"
         }
         plugins {
-            rsocketRpc {
+            messageStreamsRpc {
                 artifact = "com.jauntsdn.rsocket:rsocket-rpc-reactor-compiler"
             }
 
             generateProtoTasks {
                 ofSourceSet("main")*.plugins {
-                    rsocketRpc {
+                    messageStreamsRpc {
                     }
                 }
             }
@@ -90,10 +79,10 @@ idea {
     module {
         sourceDirs += file("src/main/proto")
         sourceDirs += file("src/generated/main/java")
-        sourceDirs += file("src/generated/main/rsocketRpc")
+        sourceDirs += file("src/generated/main/messageStreamsRpc")
 
         generatedSourceDirs += file("src/generated/main/java")
-        generatedSourceDirs += file("src/generated/main/rsocketRpc")
+        generatedSourceDirs += file("src/generated/main/messageStreamsRpc")
     }
 }
 
