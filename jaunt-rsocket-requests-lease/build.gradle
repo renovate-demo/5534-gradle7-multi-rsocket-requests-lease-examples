@@ -21,7 +21,7 @@ plugins {
 }
 
 dependencies {
-    protobuf project(":rsocket-requests-lease-idl")
+    protobuf project(":jaunt-rsocket-requests-lease-idl")
 
     implementation "com.jauntsdn.rsocket:rsocket-rpc-reactor"
     implementation "com.google.protobuf:protobuf-java"

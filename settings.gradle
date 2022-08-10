@@ -8,7 +8,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "rsocket-requests-lease-examples-parent"
-include "rsocket-requests-lease"
-include "rsocket-requests-lease-idl"
+rootProject.name = "jaunt-rsocket-requests-lease-examples-parent"
+include "jaunt-rsocket-requests-lease"
+include "jaunt-rsocket-requests-lease-idl"
 
