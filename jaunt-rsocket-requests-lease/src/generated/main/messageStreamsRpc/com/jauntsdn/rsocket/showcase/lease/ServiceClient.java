@@ -1,11 +1,12 @@
 package com.jauntsdn.rsocket.showcase.lease;
 
 @javax.annotation.Generated(
-    value = "jauntsdn.com rpc compiler (version 1.1.3)",
+    value = "jauntsdn.com rpc compiler (version 1.1.4)",
     comments = "source: com/jauntsdn/rsocket/showcase/lease/service.proto")
 @com.jauntsdn.rsocket.Rpc.Generated(
     role = com.jauntsdn.rsocket.Rpc.Role.CLIENT,
     service = Service.class)
+@SuppressWarnings("all")
 public final class ServiceClient implements Service {
   private final com.jauntsdn.rsocket.MessageStreams streams;
   private final io.netty.buffer.ByteBufAllocator allocator;
